@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Recommendation</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crop.css') }}">
+</head>
+
+<div class="login">
+	<h1>Details for predicting Stroke</h1><br>
+    <form action="{{ url_for('strokepredict') }}" method="post">
+        <input type="text" name="age" placeholder="Age of the patient" required="required" />
+
+        <input type="text" name="hypertension" placeholder="Hypertension (0:No and 1:Yes)" required="required" />
+
+        <input type="text" name="heart_disease" placeholder="Heart Disease (0:No and 1:Yes)" required="required" />
+
+        <input type="text" name="avg_glucose_level" placeholder="Glucose level" required="required" />
+
+        <input type="text" name="bmi" placeholder="BMI " required="required" />
+
+        <select name = "Gender">
+            <option class="hidden"  selected disabled>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <select name = "Martial Status">
+            <option class="hidden"  selected disabled>Martial Status</option>
+            <option>Married</option>
+            <option>Not Married</option>
+
+        </select>
+
+
+        <select name = "Work Type">
+            <option class="hidden"  selected disabled>Work Type</option>
+            <option>Govt Job</option>
+            <option>Never Worked</option>
+            <option>Private Job</option>
+            <option>Self Employed</option>
+            <option>Student/Children</option>
+        </select>
+
+
+        <select name = "Residence Type">
+            <option class="hidden"  selected disabled>Residence Type</option>
+            <option>Rural</option>
+            <option>Urban</option>
+
+        </select>
+
+
+        <select name = "Smoking Status">
+            <option class="hidden"  selected disabled>Smoking Status</option>
+            <option>Dont want to Disclose</option>
+            <option>Formerly Smoked</option>
+            <option>Never Smoked</option>
+            <option>Smokes</option>
+        </select>
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+</div>
+
+
+</body>
+</html>

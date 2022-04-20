@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AGROHEALTH</title>
+    <link rel="stylesheet" href="/static/fontawesome-5.5/css/all.min.css'" />
+    <link rel="stylesheet" href="/static/slick/slick.css">
+    <link rel="stylesheet" href="/static/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+
+  </head>
+  <body>    
+    <!-- Hero section -->
+    <section id="infinite" class="text-white tm-font-big tm-parallax">
+      <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <h2 class="tm-hero-title">AGROHEALTH</h2>
+            <p class="tm-hero-subtitle">
+              One-stop Solution to 
+              <br>Agriculture and Healthcare problems
+            </p>
+        </div>        
+      </div>
+
+      <div class="tm-next tm-intro-next">
+        <a class="text-center tm-down-arrow-link">
+          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
+        </a>
+      </div>      
+    </section>
+
+    <section id="models" class="tm-section-pad-top">
+      
+      <div class="container">
+        <div class="col-lg-12 col-xl-12">
+            <div class="tm-intro-text-container">
+                <h2 class="tm-text-primary mb-4 tm-section-title text-cente">MODELS</h2>
+            </div>
+        </div>
+        <div class="cards-list">
+  
+          <div class="card 1">
+            <div class="card_image"> 
+              <img src="https://media.giphy.com/media/l2JdYdhwyezr1mts4/giphy.gif" /> 
+            </div>
+            <div class="card_title title-black">
+              <a href = "{{ url_for('crop') }}"><p>Crop Recommendation</p></a>
+            </div>
+          </div>
+          
+          <div class="card 2">
+            <div class="card_image">
+              <img src="https://media.giphy.com/media/3orif3ZcnPA1Cdpr4k/giphy.gif" />
+            </div>
+            <div class="card_title title-black">
+              <a href = "{{ url_for('fertilizer') }}"><p>Fertilizer Prediction</p></a>
+            </div>
+          </div>
+          
+          <div class="card 3">
+            <div class="card_image">
+              <img src="https://media.giphy.com/media/3orieTTZVPaVNMhRra/giphy.gif" />
+            </div>
+            <div class="card_title title-black">
+              <a href = "{{ url_for('stroke') }}"><p>Stroke Prediction</p></a>
+            </div>
+          </div>
+            
+            <div class="card 4">
+            <div class="card_image">
+              <img src="https://media.giphy.com/media/3orieXdgxl1FEDVkyc/giphy.gif" />
+              </div>
+            <div class="card_title title-black">
+              <a href = "{{ url_for('life') }}"><p>Life Expectancy</p></a>
+            </div>
+            </div>
+          
+          </div>
+      </div>
+      
+    </section>
+    
+    <script src="js/jquery-1.9.1.min.js"></script>     
+    <script src="slick/slick.min.js"></script>
+    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>     
+    <script src="js/bootstrap.min.js"></script> 
+    <script>
+
+      function getOffSet(){
+        var _offset = 450;
+        var windowHeight = window.innerHeight;
+
+        if(windowHeight > 500) {
+          _offset = 400;
+        } 
+        if(windowHeight > 680) {
+          _offset = 300
+        }
+        if(windowHeight > 830) {
+          _offset = 210;
+        }
+
+        return _offset;
+      }
+
+      function setParallaxPosition($doc, multiplier, $object){
+        var offset = getOffSet();
+        var from_top = $doc.scrollTop(),
+          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
+        $object.css({"background-position" : bg_css });
+      }
+    
+      var background_image_parallax = function($object, multiplier, forceSet){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        // $object.css({"background-attatchment" : "fixed"});
+
+        if(forceSet) {
+          setParallaxPosition($doc, multiplier, $object);
+        } else {
+          $(window).scroll(function(){          
+            setParallaxPosition($doc, multiplier, $object);
+          });
+        }
+      };
+
+      var background_image_parallax_2 = function($object, multiplier){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        $object.css({"background-attachment" : "fixed"});
+        
+        $(window).scroll(function(){
+          if($(window).width() > 768) {
+            var firstTop = $object.offset().top,
+                pos = $(window).scrollTop(),
+                yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
+
+            var bg_css = 'center ' + yPos + 'px';
+
+            $object.css({"background-position" : bg_css });
+          } else {
+            $object.css({"background-position" : "center" });
+          }
+        });
+      };
+      
+      $(function(){
+        // Handle window resize
+        window.addEventListener('resize', function(){
+          background_image_parallax($(".tm-parallax"), 0.30, true);
+        }, true);
+
+        
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 600, 'easeInOutExpo', function(){
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+
+      });
+    </script>
+  </body>
+</html>

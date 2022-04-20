@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Fertilizer Recommendation Application</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crop.css') }}">
+</head>
+
+<div class="login">
+    <h1>Details for Fertilizer Prediction</h1>
+    <br>
+    <form action="{{ url_for('fertilizerpredict') }}" method="post">
+        <input type="text" name="Temparature" placeholder="Temparature eg. 30"><br>
+        <input type="text" name="Humidity" placeholder="Humidity eg. 60"><br>
+        <input type="text" name="Moisture" placeholder="Moisture eg. 40"><br>
+        <input type="text" name="Nitrogen" placeholder="Nitrogen eg. 20"><br>
+        <input type="text" name="Phosphorous" placeholder="Phosphorous eg. 15"><br>
+
+        <select class="form-input align-center" name="Soil-Type">
+            <option value="none">Select Soil Type</option>
+            <option value="Soil Type_Loamy">Loamy</option>
+            <option value="Soil Type_Sandy">Sandy</option>
+            <option value="Soil Type_Clayey">Clayey</option>
+            <option value="Soil Type_Black">Black</option>
+            <option value="Soil Type_Red">Red</option>
+        </select><br>
+        <!-- Form options 2 -->
+        <select class="form-input align-center" name="Crop-Type">
+            <option value="none">Select Crop Type</option>
+            <option value="Crop Type_Sugarcane">Sugarcane</option>
+            <option value="Crop Type_Cotton">Cotton</option>
+            <option value="Crop Type_Millets">Millets</option>
+            <option value="Crop Type_Pulses">Pulses</option>
+            <option value="Crop Type_Paddy">Paddy</option>
+            <option value="Crop Type_Wheat">Wheat</option>
+            <option value="Crop Type_Tobacco">Tobacco</option>
+            <option value="Crop Type_Oil seeds">Oil seeds</option>
+            <option value="Crop Type_Ground Nuts">Ground Nuts</option>
+            <option value="Crop Type_Barley">Barley</option>
+            <option value="Crop Type_Maize">Maize</option>
+        </select><br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+</div>
+
+
+</body>
+</html>

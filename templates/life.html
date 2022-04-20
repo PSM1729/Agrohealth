@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="height: 160%;">
+<head>
+    <meta charset="UTF-8">
+    <title>Life Expectancy Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crop.css') }}">
+</head>
+
+<div class="login">
+    <h1>Details for predicting Life Expectancy</h1>
+    <br>
+    <form action="{{ url_for('lifepredict') }}" method="post">
+        <input type="text" name="Status" placeholder="STATUS (Developing:0&Developed:1)">
+
+        <input type="text" name="Adult_mortality" placeholder="ADULT MORTALITY">
+
+        <input type="text" name="Alcohol" placeholder="ALCOHOL">
+    
+        <input type="text" name="Percentage_expenditure" placeholder="EXPENDITURE">
+    
+        <input type="text" name="HepatitisB" placeholder="HEPATITIS B">
+
+        <input type="text" name="Measles" placeholder="MEASLES">
+
+        <input type="text" name="BMI" placeholder="BMI">
+
+        <input type="text" name="Under_five_deaths" placeholder="UNDER 5 DEATHS">
+
+        <input type="text" name="Polio" placeholder="POLIO">
+
+        <input type="text" name="Total_expenditure" placeholder="TOTAL EXPENDITURE">
+
+        <input type="text" name="Diphtheria" placeholder="DIPHTHERIA">
+
+        <input type="text" name="HIV/AIDS" placeholder="HIV/AIDS">
+
+        <input type="text" name="GDP" placeholder="GDP">
+
+        <input type="text" name="Population" placeholder="POPULATION">
+
+        <input type="text" name="Thinness_1-19_years" placeholder="Prevalence of thinness among children and adolescents">
+
+        <input type="text" name="Thinness_5-9_years" placeholder="Prevalence of thinness among children">
+
+        <input type="text" name="Income_composition_of_resources" placeholder="Income composition of resources">
+
+        <input type="text" name="Schooling" placeholder="SCHOOLING">
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        
+    </form>
+</div>
+
+
+</body>
+</html>
