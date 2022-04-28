@@ -118,14 +118,68 @@ def stroke():
 
 @app.route('/strokepredict', methods=['POST'])
 def strokepredict():
-    int_features = list ()
-    if request.method == "POST":
-        features = [int (x) for x in request.form.values()]
-        final_features = np.array ([features] )
-        prediction = model4.predict ( final_features )
-        output = round (prediction[0], 2)
+    temp_array =list()
+    if request.method== 'POST':
+        age =int(request.form['age'])
+        hype = int(request.form['hypertension'])
+        heart = int(request.form['heart_disease'])
+        glevel = int(request.form['avg_glucose_level'])
+        bmi = int(request.form['bmi'])
 
-        return render_template ('result.html', prediction_text=' Your Life Expectancy is {}'.format (output))
+        gender = request.form['Gender']
+        if gender =='Female':
+            temp_array= temp_array+[1,0]
+        else:
+            temp_array = temp_array + [0 , 1]
+
+        marr = request.form['Martial Status']
+        if marr=='Not Married':
+            temp_array = temp_array + [1, 0]
+        else:
+            temp_array = temp_array + [0 , 1]
+
+        govt = request.form['Work Type']
+        if govt == 'Govt Job':
+            temp_array = temp_array + [1,0,0,0,0]
+        elif govt == 'Never Worked':
+            temp_array = temp_array + [0, 1, 0, 0, 0]
+        elif govt == 'Private Job':
+            temp_array = temp_array + [0, 0, 1, 0, 0]
+        elif govt == 'Self Employed':
+            temp_array = temp_array + [0, 0, 0, 1, 0]
+        elif govt == 'Student/Children':
+            temp_array = temp_array + [0, 0, 0, 0, 1]
+
+
+        rt = request.form['Residence Type']
+        if rt=='Rural':
+            temp_array = temp_array + [1, 0]
+        else:
+            temp_array = temp_array + [0 , 1]
+
+        smk = request.form['Smoking Status']
+        if smk == 'Dont want to Disclose':
+            temp_array = temp_array + [1,0,0,0]
+        elif smk == 'Formerly Smoked':
+            temp_array = temp_array + [0, 1, 0, 0]
+        elif smk == 'Never Smoked':
+            temp_array = temp_array + [0, 0, 1, 0 ]
+        elif smk == 'Smokes':
+            temp_array = temp_array + [0, 0, 0, 1]
+
+
+        temp_array = temp_array + [age , hype , heart , glevel , bmi]
+
+        final_features = np.array([temp_array])
+        prediction = model4.predict( final_features )
+        output = prediction[0]
+
+        if output == 0:
+            output = 'You are less likely to get stroke'
+        else:
+            output = 'You are likely to get stroke'
+
+        return render_template ( 'result.html', prediction_text='  {}'.format( output ) )
 
     else:
         return render_template ('stroke.html') 
